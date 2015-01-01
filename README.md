@@ -1,11 +1,13 @@
-ETR
+APCS Final Project Term 1
 ===
 
-Camille Casino, Daisy Barbanel Period 1
+Camille Casino
+Daisy Barbanel
+Period 1
 
 ##Concept
 
-Room Escape puzzle
+Room Escape Puzzle
 
 ##ChangeLog
 
