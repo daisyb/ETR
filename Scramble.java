@@ -36,9 +36,10 @@ public class Scramble extends JFrame{
 			boxList[middle].add(t);
 			boxList[middle].revalidate();
 		    }
-		} else if (ae.getSource() == clear &&
-			   t.getParent() == boxList[middle]){    
-		    boxList[middle].remove(t);
+		} else if (ae.getSource() == clear){    
+		    try{
+			boxList[middle].remove(t);
+		    } catch(Exception e){}
 		    boxList[middle].revalidate();
 		}
 		    
