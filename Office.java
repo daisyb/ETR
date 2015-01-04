@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.lang.ClassLoader;
 
 public class Office extends JFrame {
     
@@ -43,6 +44,16 @@ public class Office extends JFrame {
     }
     
     public static void main(String[] args) {
+
+	ClassLoader classLoader = Office.class.getClassLoader();
+	
+	try {
+	    Class aClass = classLoader.loadClass("Scramble");
+	    System.out.println("aClass.getName() = " + aClass.getName());
+	} catch (ClassNotFoundException e) {
+	    e.printStackTrace();
+	}
+
 	Office o = new Office();
 	o.setVisible(true);
     }
