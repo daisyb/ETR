@@ -22,21 +22,9 @@ Room Escape Puzzle
 1/4
 - Camille & Daisy: finalized outline for the puzzles
 
-##Ideas
-
-- Bookshelf colors help unlock phone which reveals some message.
-
-- Find key to drawers, behind painting?
-
-- Code to unlock safe
-
-- eventually find key to door
-
-- scraps of paper scattered around the room to tell you a message
-
 ## FINAL PUZZLE OUTLINE
 
-- 
+- key to first drawer in painting
 - The first drawer contains scissors
 - The stuffed animals are cut open.
 -- The dog contains nothing.
