@@ -75,22 +75,22 @@ public class Scramble extends JFrame{
 
     public Scramble(){
 	setTitle("Picture Scramble");
-	setSize(500,700);
+	setSize(600,1000);
 	setLocation(100,100);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	//setResizable(false);
 	pane = getContentPane();
 	pane.setLayout(new BoxLayout(pane,BoxLayout.Y_AXIS));
 	grid = new JPanel();
-	grid.setMaximumSize(new Dimension(500,500));
-	grid.setMinimumSize(new Dimension(500,500));
-	grid.setLayout(new GridLayout(5,5));
+	grid.setMaximumSize(new Dimension(600,800));
+	grid.setMinimumSize(new Dimension(600,800));
+	grid.setLayout(new GridLayout(8,6));
 	try {                
-	    image = ImageIO.read(new File("Goat.jpg"));
+	    image = ImageIO.read(new File("pokecenter.jpg"));
 	} catch (IOException ex) {
 	    System.out.println("oops");
 	}
-	boxList = new Box[25];
+	boxList = new Box[48];
 	makeBoxes(boxList);
 	makeKey();
        	shuffle(boxList);
@@ -135,9 +135,9 @@ public class Scramble extends JFrame{
 
     public void makeBoxes(JToggleButton[] buttons){
 	int index = 0;
-	for(int k = 0; k < 5;k++){
+	for(int k = 0; k < 8;k++){
 	    int y = k*100;
-	    for(int j = 0; j < 5; j++){
+	    for(int j = 0; j < 6; j++){
 		int x= j*100;
 		buttons[index] = new Box(0,x,y);
 		buttons[index].update(buttons[index].getGraphics());
@@ -174,10 +174,10 @@ public class Scramble extends JFrame{
 	int y = 0;
 	int x = 0;
 	int index = 0;
-	key = new int[25][2];
-	for(int k=0;k<5;k++){
+	key = new int[48][2];
+	for(int k=0;k<6;k++){
 	    y = k*100;
-	    for(int j=0;j<5;j++){
+	    for(int j=0;j<8;j++){
 		x=j*100;
 		key[index][0] = x;
 		key[index][1] = y;

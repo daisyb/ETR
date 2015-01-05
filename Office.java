@@ -26,7 +26,7 @@ public class Office extends JFrame {
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	pane = getContentPane();
 	try {                
-	    image = ImageIO.read(new File("officetemp.jpg"));
+	    image = ImageIO.read(new File("office.jpg"));
 	} catch (IOException ex) {
 	    System.out.println("oops");
 	}
@@ -44,15 +44,8 @@ public class Office extends JFrame {
     }
     
     public static void main(String[] args) {
-
-	ClassLoader classLoader = Office.class.getClassLoader();
-	
-	try {
-	    Class aClass = classLoader.loadClass("Scramble");
-	    System.out.println("aClass.getName() = " + aClass.getName());
-	} catch (ClassNotFoundException e) {
-	    e.printStackTrace();
-	}
+	Scramble s = new Scramble();
+	s.setVisible(true);
 
 	Office o = new Office();
 	o.setVisible(true);
