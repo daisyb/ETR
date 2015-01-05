@@ -18,6 +18,8 @@ public class Scramble extends JFrame{
     private Box[] boxList;
     private int[][] key;
     private int clicked, middle;
+
+
     private ActionListener aL = new ActionListener(){
 	    public void actionPerformed(ActionEvent ae){
 		middle = boxList.length/2;
