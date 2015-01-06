@@ -21,7 +21,7 @@ public class Office extends JFrame {
     
     public Office() {
 	setTitle("Office");
-	setSize(600,600);
+	setSize(700,900);
 	setLocation(100,100);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	pane = getContentPane();
