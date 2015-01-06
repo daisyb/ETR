@@ -56,6 +56,8 @@ public class Office extends JFrame implements MouseListener {
 	    s.setVisible(true);
 	    System.out.println("yes");
 	}
+
+	
     }
     
     private class Canvas extends JPanel {
