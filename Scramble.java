@@ -22,7 +22,7 @@ public class Scramble extends JFrame{
 
     private ActionListener aL = new ActionListener(){
 	    public void actionPerformed(ActionEvent ae){
-		middle = boxList.length/2;
+		middle = 27;
 		if(ae.getSource() == submit){
 		    if(isCorrect(key,boxList)){
 			t = new JTextArea(" Puzzle\n Complete!\n\n Close window\n to continue");
@@ -30,7 +30,7 @@ public class Scramble extends JFrame{
 			t.setBackground(Color.YELLOW);
 			boxList[middle].add(t);
 			boxList[middle].revalidate();
-			unEnable(boxList);
+			//unEnable(boxList);
 		    }else {
 			t = new JTextArea("\n Incorrect,\n Click 'Clear'\n to continue");
 			t.setEditable(false);
@@ -175,9 +175,9 @@ public class Scramble extends JFrame{
 	int x = 0;
 	int index = 0;
 	key = new int[48][2];
-	for(int k=0;k<6;k++){
+	for(int k=0;k<8;k++){
 	    y = k*100;
-	    for(int j=0;j<8;j++){
+	    for(int j=0;j<6;j++){
 		x=j*100;
 		key[index][0] = x;
 		key[index][1] = y;
@@ -189,7 +189,9 @@ public class Scramble extends JFrame{
 
     public boolean isCorrect(int[][] ans, Box[] submit){
       	for(int i = 0; i < ans.length; i ++){
-	    if(submit[i].getx() != ans[i][0] && submit[i].gety() != ans[i][1]){
+	    if(submit[i].getx() != ans[i][0] ||
+	       submit[i].gety() != ans[i][1]){
+		
 		return false;
 	    }
 	}
