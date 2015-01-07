@@ -8,18 +8,25 @@ import javax.imageio.*;
 
 public class Scramble extends JFrame{
 
-    private Random rnd = new Random();
-    private JFrame frame;
-    private BufferedImage image;
-    private Container pane;
-    private JPanel options,grid;
-    private JButton submit, clear;
-    private JTextArea instructions,t;
-    private Box[] boxList;
-    private int[][] key;
-    private int clicked, middle;
+    /*----------------------------------Instance variables----------------------------------*/
+    private Random rnd = new Random(); 
+    private BufferedImage image; //stores image
+    private Container pane;     //holds everything
+    private JPanel grid; //contains image pieces(boxes)
+    private JButton submit, clear; //'submit' checks puzzle, 'clear' clears onscren meassages
+    private JTextArea instructions,t; //text area to hold instructions
+    private Box[] boxList; //array of buttons with pieces of the image on it, Box is a custom class
+    private int[][] key; // holds the cordinates of the correct puzzle configuration
+    private int clicked, middle; //keeps track of which button was pressed
 
 
+
+    /*-----------------------------------------Listeners------------------------------------*/
+
+    //Listener for the submit and clear buttons
+    //if 'submit' checks if the current formation of images is correct
+    //and adds 'instructions' to a box
+    //if 'clear' clears the 'instructions' box of text
     private ActionListener aL = new ActionListener(){
 	    public void actionPerformed(ActionEvent ae){
 		middle = 27;
@@ -48,6 +55,9 @@ public class Scramble extends JFrame{
 	    }
 	};
 
+    //Listener for box's in the picture puzzle
+    //stores the index of the currently clicked box in 'clicked' and
+    //switches the images on two box's if one box is already clicked
     private  ActionListener actionListener = new ActionListener() {
 	    public void actionPerformed(ActionEvent actionEvent) {
 		Box b = (Box) actionEvent.getSource();
@@ -72,6 +82,8 @@ public class Scramble extends JFrame{
 		}
 	    }
 	};
+
+    /*-------------------------------------Constructor---------------------------------*/
 
     public Scramble(){
 	setTitle("Picture Scramble");
@@ -119,8 +131,11 @@ public class Scramble extends JFrame{
 	pane.add(clear);
     }
     
-   public void shuffle(Box[] buttons){
 
+    /*-----------------------------------------Methods-----------------------------------------*/
+
+    //switches boxes in boxList to shuffle the image formation
+   public void shuffle(Box[] buttons){
 	for(int i = buttons.length -1; i > 0;i--){
 	    if(i%3 == 0){
 		int index = rnd.nextInt(i + 1);
@@ -133,6 +148,7 @@ public class Scramble extends JFrame{
 	}
 	} 
 
+    //initializes the boxes in boxList
     public void makeBoxes(JToggleButton[] buttons){
 	int index = 0;
 	for(int k = 0; k < 8;k++){
@@ -148,6 +164,7 @@ public class Scramble extends JFrame{
 
     }
     
+    //switches the images depicted on two buttons(boxes)
     public void switchPlaces(Box b1, Box b2){
 	int x1 = b1.getx();
 	int y1 = b1.gety();
@@ -159,6 +176,7 @@ public class Scramble extends JFrame{
 	b2.repaint();
     }
     
+    //sets up the game by changing the colors of the bordes of enabled and unenabled boxes
     public void ColorBorders(JToggleButton[] buttons){
 	for(int i = 0;i< buttons.length;i++){
 	    if(!buttons[i].isEnabled()){
@@ -170,6 +188,7 @@ public class Scramble extends JFrame{
 	}
     }
     
+    //creates a key which hold the coordinates of a correct picture configuration
     public void makeKey(){
 	int y = 0;
 	int x = 0;
@@ -187,6 +206,7 @@ public class Scramble extends JFrame{
 
     }
 
+    //checks the information stored in key[][] against boxList[]
     public boolean isCorrect(int[][] ans, Box[] submit){
       	for(int i = 0; i < ans.length; i ++){
 	    if(submit[i].getx() != ans[i][0] ||
@@ -198,6 +218,7 @@ public class Scramble extends JFrame{
 	return true;
     }
 
+    //unenables all boxes for end game sequence
     public void unEnable(Box[] b){
 	for(int i = 0; i < b.length;i++){
 	    b[i].setEnabled(false);
@@ -205,12 +226,20 @@ public class Scramble extends JFrame{
 	}
     }
     
+    /*----------------------------------Classes-----------------------------------*/
+
+    /*
+      Box is a JToggleButton which stores information about 
+      which piece of 'image' is depicted on the button with a 
+      paintComponent method to paint this piece on the button
+    */
+
     private class Box extends JToggleButton {
 	int dstx1;
 	int dsty1;
 	int srcx1;
 	int srcy1;
-	int serialNum = 0;
+	int serialNum = 0; //stores index in boxList
 
 	public Box(int dst, int srcx, int srcy){
 	    dstx1 = dst;
@@ -249,7 +278,8 @@ public class Scramble extends JFrame{
     }
 
 
-    
+    /*------------------------------------------Main--------------------------------------*/
+
     public static void main(String[] args){
 	Scramble s = new Scramble();
 	s.setVisible(true);
