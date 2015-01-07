@@ -89,7 +89,7 @@ public class Scramble extends JFrame{
 	setTitle("Picture Scramble");
 	setSize(600,1000);
 	setLocation(100,100);
-	setDefaultCloseOperation(EXIT_ON_CLOSE);
+	//setDefaultCloseOperation(EXIT_ON_CLOSE);
 	//setResizable(false);
 	pane = getContentPane();
 	pane.setLayout(new BoxLayout(pane,BoxLayout.Y_AXIS));
