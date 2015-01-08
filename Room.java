@@ -56,6 +56,9 @@ public class Room extends JFrame implements MouseListener {
 	doorpad.setXY(630,665,365,445);
     }
 
+    public boolean openScramble(){
+    }
+    
     public void mousePressed(MouseEvent e) {
     }
 
@@ -76,7 +79,8 @@ public class Room extends JFrame implements MouseListener {
 	    Scramble s = new Scramble();
 	    s.setVisible(true);
 	    System.out.println("painting");
-
+	    while(s.getWinner() == false){
+	    }
 	}else if (rilakkuma.withinBounds(x,y)){
 	    System.out.println("rilakkuma");
 

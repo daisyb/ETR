@@ -18,6 +18,7 @@ public class Scramble extends JFrame{
     private Box[] boxList; //array of buttons with pieces of the image on it, Box is a custom class
     private int[][] key; // holds the cordinates of the correct puzzle configuration
     private int clicked, middle; //keeps track of which button was pressed
+    private boolean winner;
 
 
 
@@ -37,6 +38,7 @@ public class Scramble extends JFrame{
 			t.setBackground(Color.YELLOW);
 			boxList[middle].add(t);
 			boxList[middle].revalidate();
+			winner = true;
 			unEnable(boxList);
 		    }else {
 			t = new JTextArea("\n Incorrect,\n Click 'Clear'\n to continue");
@@ -112,6 +114,7 @@ public class Scramble extends JFrame{
 	    grid.add(boxList[i]);
 	}
 	pane.add(grid);
+	winner = false;
 	clicked = -1;
 	String s = new String();
 	s = " Complete the picture by reorganizing the frames.\n To switch a frame's location click on the frame and then click the frame you'd\n like to switch it with.\n Frames bordered in grey cannot be switched.\n Click 'Submit' when done.\n Click 'Clear' to clear on screen messages.";
@@ -225,7 +228,13 @@ public class Scramble extends JFrame{
 	    b[i].setBorder(BorderFactory.createLineBorder(Color.GRAY));
 	}
     }
+
+    public boolean getWinner(){
+	return winner;
+    }
     
+    
+
     /*----------------------------------Classes-----------------------------------*/
 
     /*
