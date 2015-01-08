@@ -8,7 +8,7 @@ import javax.imageio.*;
 
 public class Scramble extends JFrame{
 
-    /*----------------------------------Instance variables----------------------------------*/
+    /*-------------------------Instance variables-------------------*/
     private Random rnd = new Random(); 
     private BufferedImage image; //stores image
     private Container pane;     //holds everything
@@ -21,7 +21,7 @@ public class Scramble extends JFrame{
 
 
 
-    /*-----------------------------------------Listeners------------------------------------*/
+    /*---------------------------Listeners---------------------------*/
 
     //Listener for the submit and clear buttons
     //if 'submit' checks if the current formation of images is correct
@@ -32,12 +32,12 @@ public class Scramble extends JFrame{
 		middle = 27;
 		if(ae.getSource() == submit){
 		    if(isCorrect(key,boxList)){
-			t = new JTextArea(" Puzzle\n Complete!\n\n Close window\n to continue");
+			t = new JTextArea(" Puzzle\n Complete!\n Close window\n to continue");
 			t.setEditable(false);
 			t.setBackground(Color.YELLOW);
 			boxList[middle].add(t);
 			boxList[middle].revalidate();
-			//unEnable(boxList);
+			unEnable(boxList);
 		    }else {
 			t = new JTextArea("\n Incorrect,\n Click 'Clear'\n to continue");
 			t.setEditable(false);
@@ -83,19 +83,19 @@ public class Scramble extends JFrame{
 	    }
 	};
 
-    /*-------------------------------------Constructor---------------------------------*/
+    /*----------------------Constructor--------------------------*/
 
     public Scramble(){
 	setTitle("Picture Scramble");
-	setSize(600,1000);
+	setSize(600,800);
 	setLocation(100,100);
 	//setDefaultCloseOperation(EXIT_ON_CLOSE);
 	//setResizable(false);
 	pane = getContentPane();
 	pane.setLayout(new BoxLayout(pane,BoxLayout.Y_AXIS));
 	grid = new JPanel();
-	grid.setMaximumSize(new Dimension(600,800));
-	grid.setMinimumSize(new Dimension(600,800));
+	grid.setMaximumSize(new Dimension(450,600));
+	grid.setMinimumSize(new Dimension(450,600));
 	grid.setLayout(new GridLayout(8,6));
 	try {                
 	    image = ImageIO.read(new File("pokecenter.jpg"));
@@ -132,7 +132,7 @@ public class Scramble extends JFrame{
     }
     
 
-    /*-----------------------------------------Methods-----------------------------------------*/
+    /*---------------------------Methods-----------------------------*/
 
     //switches boxes in boxList to shuffle the image formation
    public void shuffle(Box[] buttons){
@@ -152,9 +152,9 @@ public class Scramble extends JFrame{
     public void makeBoxes(JToggleButton[] buttons){
 	int index = 0;
 	for(int k = 0; k < 8;k++){
-	    int y = k*100;
+	    int y = k*75;
 	    for(int j = 0; j < 6; j++){
-		int x= j*100;
+		int x= j*75;
 		buttons[index] = new Box(0,x,y);
 		buttons[index].update(buttons[index].getGraphics());
 		buttons[index].setEnabled(false);
@@ -194,10 +194,10 @@ public class Scramble extends JFrame{
 	int x = 0;
 	int index = 0;
 	key = new int[48][2];
-	for(int k=0;k<8;k++){
-	    y = k*100;
+	for(int k=0;k<8 ;k++){
+	    y = k*75;
 	    for(int j=0;j<6;j++){
-		x=j*100;
+		x=j*75;
 		key[index][0] = x;
 		key[index][1] = y;
 		index +=1;
@@ -272,13 +272,13 @@ public class Scramble extends JFrame{
 
 	public void paintComponent(Graphics g) {
 	    super.paintComponent(g);
-	    g.drawImage(image, dstx1, dsty1, dstx1 + 100, dsty1 + 100, 
-		        srcx1, srcy1, srcx1 + 100, srcy1 + 100, null);
+	    g.drawImage(image, dstx1, dsty1, dstx1+75, dsty1+75, 
+		        srcx1, srcy1, srcx1+75, srcy1+75, null);
 	}
     }
 
 
-    /*------------------------------------------Main--------------------------------------*/
+    /*---------------------------Main------------------------------*/
 
     public static void main(String[] args){
 	Scramble s = new Scramble();
