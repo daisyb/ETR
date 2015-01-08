@@ -23,10 +23,16 @@ Room Escape Puzzle
 - Camille & Daisy: finalized outline for the puzzles
 
 1/5
-- Daisy: modified Scramble.java for new image
+- Camille & Daisy: began Keypad.java, the final way to exit the room
+  - implemented MouseListener interface
+
+1/6
+- Camille: worked on visuals of Keypad.java
+
 
 1/7
-- Daisy: worked on Stuff sub-class of Room.java for items and set up clickability for said items
+- Daisy: worked on Stuff sub-class of Room.java for items
+  - set up clickability for said items
 
 
 ## FINAL PUZZLE OUTLINE
