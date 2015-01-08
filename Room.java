@@ -18,7 +18,7 @@ public class Room extends JFrame implements MouseListener {
     private BufferedImage image;
     private Container pane;
     private JPanel canvas;
-    private stuff painting, totoro, rilakkuma, appa, drawer1, drawer2, drawer3, doorhandle, book;
+    private Stuff painting, totoro, rilakkuma, appa, drawer1, drawer2, drawer3, doorpad, book;
     
     public Room() {
 	setTitle("Room");
@@ -31,10 +31,29 @@ public class Room extends JFrame implements MouseListener {
 	} catch (IOException ex) {
 	    System.out.println("oops");
 	}
+
 	canvas = new Canvas();
 	canvas.update(canvas.getGraphics());
 	pane.add(canvas);
 	canvas.addMouseListener(this);
+
+	//sets the x y bounds of the items in the room and initiallizes
+	painting = new Stuff();
+	painting.setXY(300,400,250,380);
+	rilakkuma = new Stuff();
+	rilakkuma.setXY(310, 370, 416, 495);
+	totoro = new Stuff();
+	totoro.setXY(217, 292, 442, 494);
+	appa = new Stuff();
+	appa.setXY(400,515,437,491);
+	drawer1 = new Stuff();
+	drawer1.setXY(190,285,525,555);
+	drawer2 = new Stuff();
+	drawer2.setXY(295,395,525,555);
+	drawer3 = new Stuff();
+	drawer3.setXY(402,514,525,555);
+	doorpad = new Stuff();
+	doorpad.setXY(630,665,365,445);
     }
 
     public void mousePressed(MouseEvent e) {
@@ -52,39 +71,92 @@ public class Room extends JFrame implements MouseListener {
     public void mouseClicked(MouseEvent e) {
 	int x = e.getX();
 	int y = e.getY();
-	if ((x < 400 && x > 300) && (y < 380 && y > 250)) {
+	//tests for if clickability works
+	if (painting.withinBounds(x,y)) {
 	    Scramble s = new Scramble();
 	    s.setVisible(true);
-	    System.out.println("yes");
+	    System.out.println("painting");
+
+	}else if (rilakkuma.withinBounds(x,y)){
+	    System.out.println("rilakkuma");
+
+	}else if (totoro.withinBounds(x,y)){
+	    System.out.println("totoro");
+
+	}else if (appa.withinBounds(x,y)){
+	    System.out.println("appa");
+
+	}else if (drawer1.withinBounds(x,y)){
+	    System.out.println("d1");
+
+	}else if (drawer2.withinBounds(x,y)){
+	    System.out.println("d2");
+
+	}else if (drawer3.withinBounds(x,y)){
+	    System.out.println("d3");
+
+	}else if (doorpad.withinBounds(x,y)){
+	    System.out.println("doorpad");
+
 	}
 
 	
     }
 
-    public class stuff {
-	int x1;
-	int x2;
-	int y1;
-	int y2;
-	String name;
-	boolean active;
+    //class for items in the room
+    public class Stuff {
+        private int[] coord; //holds cordinates of item in order x1,x2,y1,y2
+	private String name;
+	private boolean active;
 
-	public void setXY(int newx1, int newx2, int newy1, int newy2){
-	    x1 = newx1;
-	    x2 = newx2;
-	    y1 = newy1;
-	    y2 = newy2;
+	public Stuff(){
+	    coord = new int[4];
+	    active = true;
+	}
+	
+	//names apply to inventory items only
+	public Stuff(String name){
+	    this.name = name;
 	}
 
-	public int getXbegin(){
-	    return this.x1;
+	public void setXY(int x1, int x2, int y1, int y2){
+	    coord[0] = x1;
+	    coord[1] = x2;
+	    coord[2] = y1;
+	    coord[3] = y2;
 	}
 
-	/*
-	  rilakkuma: 310, 370, 416, 495
-	  totoro: 216, 295, 430, 490
-	*/
+	//returns array with all 4 coordinates in it
+	public int[] getXY(){
+	    return coord;
+	}
+	
+	//tests if the given (x,y) is within the bounds of the item
+	public boolean withinBounds(int xLocation, int yLocation){
+	    if( xLocation >= coord[0] &&
+		xLocation <= coord[1] &&
+		yLocation >= coord[2] &&
+		yLocation <= coord[3]){
+		return true;
+	    }
+	    return false;
+	}
+	
+	public void setName(String s){
+	    name = s;
+	}
 
+	public String getName(){
+	    return name;
+	}
+
+	public boolean isActive(){
+	    return active;
+	}
+
+	public void setActive(boolean b){
+	    active = b;
+	}
     }
 
 	
@@ -93,7 +165,7 @@ public class Room extends JFrame implements MouseListener {
     private class Canvas extends JPanel {
 	public void paintComponent(Graphics g) {
 	    super.paintComponent(g);
-	    g.drawImage(image, 0, 0, null); // see javadoc for more info on the parameters            
+	    g.drawImage(image, 0, 0, null);
 	}
     }
     
