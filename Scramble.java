@@ -6,11 +6,12 @@ import javax.swing.*;
 import java.awt.image.*;
 import javax.imageio.*; 
 
-public class Scramble extends JFrame{
+public class Scramble extends JDialog{
 
     /*-------------------------Instance variables-------------------*/
     private Random rnd = new Random(); 
     private BufferedImage image; //stores image
+    private Frame caller;
     private Container pane;     //holds everything
     private JPanel grid; //contains image pieces(boxes)
     private JButton submit, clear; //'submit' checks puzzle, 'clear' clears onscren meassages
@@ -19,7 +20,6 @@ public class Scramble extends JFrame{
     private int[][] key; // holds the cordinates of the correct puzzle configuration
     private int clicked, middle; //keeps track of which button was pressed
     private boolean winner;
-
 
 
     /*---------------------------Listeners---------------------------*/
@@ -40,6 +40,7 @@ public class Scramble extends JFrame{
 			boxList[middle].revalidate();
 			winner = true;
 			unEnable(boxList);
+			//caller.setWonPainting(true);
 		    }else {
 			t = new JTextArea("\n Incorrect,\n Click 'Clear'\n to continue");
 			t.setEditable(false);
@@ -87,13 +88,15 @@ public class Scramble extends JFrame{
 
     /*----------------------Constructor--------------------------*/
 
-    public Scramble(){
+    public Scramble(Frame parent){
+	super(parent);
+	setModalExclusionType(Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
 	setTitle("Picture Scramble");
 	setSize(600,800);
 	setLocation(100,100);
 	//setDefaultCloseOperation(EXIT_ON_CLOSE);
 	//setResizable(false);
-	pane = getContentPane();
+        getContentPane();
 	pane.setLayout(new BoxLayout(pane,BoxLayout.Y_AXIS));
 	grid = new JPanel();
 	grid.setMaximumSize(new Dimension(450,600));
@@ -132,6 +135,14 @@ public class Scramble extends JFrame{
 	clear.addActionListener(aL);	
 	pane.add(submit);
 	pane.add(clear);
+	try{
+	    getContentPane().add(pane);
+	}catch (IOException ioe) {
+	    JOptionPane.showMessageDialog(frame, "Unable to install editor pane");
+	    return;
+	}
+	setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+	pack();
     }
     
 
@@ -287,10 +298,5 @@ public class Scramble extends JFrame{
     }
 
 
-    /*---------------------------Main------------------------------*/
 
-    public static void main(String[] args){
-	Scramble s = new Scramble();
-	s.setVisible(true);
-    }
 }

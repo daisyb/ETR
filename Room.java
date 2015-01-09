@@ -18,7 +18,13 @@ public class Room extends JFrame implements MouseListener {
     private BufferedImage image;
     private Container pane;
     private JPanel canvas;
-    private Stuff painting, totoro, rilakkuma, appa, drawer1, drawer2, drawer3, doorpad, book;
+    private ArrayList<Stuff> inventory; //arrayList to hold inventory items
+    private Stuff inHand; //object currently holding (button pressed)
+    private Stuff painting, totoro, rilakkuma, appa, drawer1, drawer2, drawer3, doorpad, book; //items in room
+    private Stuff key1, key3, scissors, phone, slip1,slip2,slip3,slip4,slip5; 
+    //^items you can hold and put in inventory
+    private boolean wonPainting;
+    
     
     public Room() {
 	setTitle("Room");
@@ -54,11 +60,13 @@ public class Room extends JFrame implements MouseListener {
 	drawer3.setXY(402,514,525,555);
 	doorpad = new Stuff();
 	doorpad.setXY(630,665,365,445);
+
+	wonPainting = false;
+
+	//set up inventory
+	inventory = new ArrayList<Stuff>();
     }
 
-    public boolean openScramble(){
-    }
-    
     public void mousePressed(MouseEvent e) {
     }
 
@@ -70,17 +78,16 @@ public class Room extends JFrame implements MouseListener {
 
     public void mouseExited(MouseEvent e) {
     }
-
+    //modal dialog
     public void mouseClicked(MouseEvent e) {
 	int x = e.getX();
 	int y = e.getY();
-	//tests for if clickability works
 	if (painting.withinBounds(x,y)) {
-	    Scramble s = new Scramble();
+	    Scramble s = new Scramble(this);
 	    s.setVisible(true);
 	    System.out.println("painting");
-	    while(s.getWinner() == false){
-	    }
+
+
 	}else if (rilakkuma.withinBounds(x,y)){
 	    System.out.println("rilakkuma");
 
@@ -92,13 +99,16 @@ public class Room extends JFrame implements MouseListener {
 
 	}else if (drawer1.withinBounds(x,y)){
 	    System.out.println("d1");
-
+	    if(key1 == inHand){
+		//open drawer
+		
+	    }
 	}else if (drawer2.withinBounds(x,y)){
 	    System.out.println("d2");
 
 	}else if (drawer3.withinBounds(x,y)){
 	    System.out.println("d3");
-
+	    
 	}else if (doorpad.withinBounds(x,y)){
 	    System.out.println("doorpad");
 
@@ -161,6 +171,10 @@ public class Room extends JFrame implements MouseListener {
 	public void setActive(boolean b){
 	    active = b;
 	}
+    }
+
+    public void setWonPainting(boolean b){
+	wonPainting = b;
     }
 
 	
