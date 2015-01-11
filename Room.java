@@ -21,15 +21,65 @@ public class Room extends JFrame implements MouseListener {
     private ArrayList<Stuff> inventory; //arrayList to hold inventory items
     private Stuff inHand; //object currently holding (button pressed)
     private Stuff painting, totoro, rilakkuma, appa, drawer1, drawer2, drawer3, doorpad, book; //items in room
-    private Stuff key1, key3, scissors, phone, slip1,slip2,slip3,slip4,slip5; 
+    private Stuff key1, key3, scissors, phone; //slip1,slip2,slip3,slip4,slip5; 
     //^items you can hold and put in inventory
-    private boolean wonPainting;
+
     
-    
+  
+    public void mousePressed(MouseEvent e) {
+    }
+
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    public void mouseExited(MouseEvent e) {
+    }
+    public void mouseClicked(MouseEvent e) {
+	int x = e.getX();
+	int y = e.getY();
+	if (painting.withinBounds(x,y)) {
+	    Scramble s = new Scramble(this,true);
+	    if(s.getWinner()){
+		inventory.add(key1);
+	    }
+	    System.out.println(inventory);
+	}else if (rilakkuma.withinBounds(x,y)){
+	    System.out.println("rilakkuma");
+
+	}else if (totoro.withinBounds(x,y)){
+	    System.out.println("totoro");
+
+	}else if (appa.withinBounds(x,y)){
+	    System.out.println("appa");
+
+	}else if (drawer1.withinBounds(x,y)){
+	    System.out.println("d1");
+	    if(key1 == inHand){
+		//open drawer
+		
+	    }
+	}else if (drawer2.withinBounds(x,y)){
+	    System.out.println("d2");
+
+	}else if (drawer3.withinBounds(x,y)){
+	    System.out.println("d3");
+	    
+	}else if (doorpad.withinBounds(x,y)){
+	    System.out.println("doorpad");
+
+	}	
+    }
+
+
+  
     public Room() {
 	setTitle("Room");
 	setSize(700,900);
-	setLocation(100,100);
+	setLocation(200,100);
+
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	pane = getContentPane();
 	try {                
@@ -61,61 +111,16 @@ public class Room extends JFrame implements MouseListener {
 	doorpad = new Stuff();
 	doorpad.setXY(630,665,365,445);
 
-	wonPainting = false;
-
 	//set up inventory
 	inventory = new ArrayList<Stuff>();
-    }
-
-    public void mousePressed(MouseEvent e) {
-    }
-
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    public void mouseExited(MouseEvent e) {
-    }
-    //modal dialog
-    public void mouseClicked(MouseEvent e) {
-	int x = e.getX();
-	int y = e.getY();
-	if (painting.withinBounds(x,y)) {
-	    Scramble s = new Scramble(this);
-	    s.setVisible(true);
-	    System.out.println("painting");
-
-
-	}else if (rilakkuma.withinBounds(x,y)){
-	    System.out.println("rilakkuma");
-
-	}else if (totoro.withinBounds(x,y)){
-	    System.out.println("totoro");
-
-	}else if (appa.withinBounds(x,y)){
-	    System.out.println("appa");
-
-	}else if (drawer1.withinBounds(x,y)){
-	    System.out.println("d1");
-	    if(key1 == inHand){
-		//open drawer
-		
-	    }
-	}else if (drawer2.withinBounds(x,y)){
-	    System.out.println("d2");
-
-	}else if (drawer3.withinBounds(x,y)){
-	    System.out.println("d3");
-	    
-	}else if (doorpad.withinBounds(x,y)){
-	    System.out.println("doorpad");
-
-	}
-
+	key1 = new Stuff("Silver Key");//idk I figure colors would be a good way for user to distinguish btwn them
+	key3 = new Stuff("Gold Key");
+	scissors = new Stuff("Scissors");
+	phone = new Stuff("phone");
+	//not sure how to handle slips
 	
     }
+
 
     //class for items in the room
     public class Stuff {
@@ -131,6 +136,10 @@ public class Room extends JFrame implements MouseListener {
 	//names apply to inventory items only
 	public Stuff(String name){
 	    this.name = name;
+	}
+
+	public String toString(){
+	    return name;
 	}
 
 	public void setXY(int x1, int x2, int y1, int y2){
@@ -172,11 +181,6 @@ public class Room extends JFrame implements MouseListener {
 	    active = b;
 	}
     }
-
-    public void setWonPainting(boolean b){
-	wonPainting = b;
-    }
-
 	
 	    
 	    
