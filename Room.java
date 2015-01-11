@@ -40,10 +40,17 @@ public class Room extends JFrame implements MouseListener {
     public void mouseClicked(MouseEvent e) {
 	int x = e.getX();
 	int y = e.getY();
-	if (painting.withinBounds(x,y)) {
+	if (painting.withinBounds(x,y) & painting.isActive()) {
 	    Scramble s = new Scramble(this,true);
 	    if(s.getWinner()){
 		inventory.add(key1);
+		try {                
+		    image = ImageIO.read(new File("Room2.jpg"));
+		} catch (IOException ex) {
+		    System.out.println("oops");
+		}
+		canvas.revalidate();
+		painting.setActive(false);
 	    }
 	    System.out.println(inventory);
 	}else if (rilakkuma.withinBounds(x,y)){
@@ -70,7 +77,9 @@ public class Room extends JFrame implements MouseListener {
 	}else if (doorpad.withinBounds(x,y)){
 	    System.out.println("doorpad");
 
-	}	
+	}else if (book.withinBounds(x,y)){
+	    System.out.println("book");
+	}
     }
 
 
@@ -110,6 +119,8 @@ public class Room extends JFrame implements MouseListener {
 	drawer3.setXY(402,514,525,555);
 	doorpad = new Stuff();
 	doorpad.setXY(630,665,365,445);
+	book = new Stuff();
+	book.setXY(109,152,390,400);
 
 	//set up inventory
 	inventory = new ArrayList<Stuff>();
