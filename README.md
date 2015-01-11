@@ -39,10 +39,10 @@ Room Escape Puzzle
   - started working on an inventory array in Room.java
 
 1/11
--Daisy: Added clickable properties to a new item in the room, the book
-  -made Stuff.java its own file outside of Room.java
-  -created pBack.java which runs after the Scramble.java puzzle is completed
-    -pBAck let's the user click on items that will enter their inventory
+- Daisy: Added clickable properties to a new item in the room, the book
+  - made Stuff.java its own file outside of Room.java
+  - created pBack.java which runs after the Scramble.java puzzle is completed
+    - pBAck let's the user click on items that will enter their inventory
 
 ## FINAL PUZZLE OUTLINE
 
