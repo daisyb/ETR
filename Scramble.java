@@ -101,7 +101,7 @@ public class Scramble extends JDialog{
 	grid.setMinimumSize(new Dimension(450,600));
 	grid.setLayout(new GridLayout(8,6));
 	try {                
-	    image = ImageIO.read(new File("pokecenter.jpg"));
+	    image = ImageIO.read(new File("images/pokecenter.jpg"));
 	} catch (IOException ex) {
 	    System.out.println("oops");
 	}
