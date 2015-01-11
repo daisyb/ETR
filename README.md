@@ -28,12 +28,15 @@ Room Escape Puzzle
 
 1/6
 - Camille: worked on visuals of Keypad.java
-
+- Daisy: Changed Scramble.java to work with new visuals
 
 1/7
 - Daisy: worked on Stuff sub-class of Room.java for items
   - set up clickability for said items
 
+1/9 - 1/10
+- Daisy: got Scramble.java to act as a modal dialog box
+  - started working on an inventory array in Room.java
 
 ## FINAL PUZZLE OUTLINE
 
