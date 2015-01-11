@@ -11,7 +11,6 @@ public class Scramble extends JDialog{
     /*-------------------------Instance variables-------------------*/
     private Random rnd = new Random(); 
     private BufferedImage image; //stores image
-    private Frame caller;
     private Container pane;     //holds everything
     private JPanel grid; //contains image pieces(boxes)
     private JButton submit, clear; //'submit' checks puzzle, 'clear' clears onscren meassages
@@ -31,7 +30,7 @@ public class Scramble extends JDialog{
     private ActionListener aL = new ActionListener(){
 	    public void actionPerformed(ActionEvent ae){
 		middle = 27;
-		if(ae.getSource() == submit){
+		if(ae.getSource() == submit && t.getParent() != boxList[middle]){
 		    if(isCorrect(key,boxList)){
 			t = new JTextArea(" Puzzle\n Complete!\n Close window\n to continue");
 			t.setEditable(false);
@@ -40,7 +39,6 @@ public class Scramble extends JDialog{
 			boxList[middle].revalidate();
 			winner = true;
 			unEnable(boxList);
-			//caller.setWonPainting(true);
 		    }else {
 			t = new JTextArea("\n Incorrect,\n Click 'Clear'\n to continue");
 			t.setEditable(false);
@@ -88,15 +86,15 @@ public class Scramble extends JDialog{
 
     /*----------------------Constructor--------------------------*/
 
-    public Scramble(Frame parent){
-	super(parent);
-	setModalExclusionType(Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
+    public Scramble(JFrame parent,boolean modal){
+	super(parent, true);
+	setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	setTitle("Picture Scramble");
 	setSize(600,800);
-	setLocation(100,100);
+	setLocation(250,150);
 	//setDefaultCloseOperation(EXIT_ON_CLOSE);
 	//setResizable(false);
-        getContentPane();
+	pane = getContentPane();        
 	pane.setLayout(new BoxLayout(pane,BoxLayout.Y_AXIS));
 	grid = new JPanel();
 	grid.setMaximumSize(new Dimension(450,600));
@@ -119,6 +117,7 @@ public class Scramble extends JDialog{
 	pane.add(grid);
 	winner = false;
 	clicked = -1;
+	t = new JTextArea();
 	String s = new String();
 	s = " Complete the picture by reorganizing the frames.\n To switch a frame's location click on the frame and then click the frame you'd\n like to switch it with.\n Frames bordered in grey cannot be switched.\n Click 'Submit' when done.\n Click 'Clear' to clear on screen messages.";
 	instructions = new JTextArea(s);
@@ -135,14 +134,11 @@ public class Scramble extends JDialog{
 	clear.addActionListener(aL);	
 	pane.add(submit);
 	pane.add(clear);
-	try{
-	    getContentPane().add(pane);
-	}catch (IOException ioe) {
-	    JOptionPane.showMessageDialog(frame, "Unable to install editor pane");
-	    return;
-	}
-	setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-	pack();
+
+
+	setVisible(true);
+
+	
     }
     
 
