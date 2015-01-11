@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.lang.ClassLoader;
 
-public class Room extends JFrame implements MouseListener {
+public class Room extends JFrame implements MouseListener{
     
     private JFrame frame;
     private BufferedImage image;
@@ -43,14 +43,16 @@ public class Room extends JFrame implements MouseListener {
 	if (painting.withinBounds(x,y) & painting.isActive()) {
 	    Scramble s = new Scramble(this,true);
 	    if(s.getWinner()){
-		inventory.add(key1);
 		try {                
-		    image = ImageIO.read(new File("Room2.jpg"));
+		    image = ImageIO.read(new File("room/Room2.jpg"));
 		} catch (IOException ex) {
 		    System.out.println("oops");
 		}
-		canvas.revalidate();
+		canvas.update(canvas.getGraphics());
 		painting.setActive(false);
+		pBack p = new pBack(this,true);
+		inventory.add(key1);
+		//inventory.add(slip);
 	    }
 	    System.out.println(inventory);
 	}else if (rilakkuma.withinBounds(x,y)){
@@ -92,7 +94,7 @@ public class Room extends JFrame implements MouseListener {
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	pane = getContentPane();
 	try {                
-	    image = ImageIO.read(new File("Room.jpg"));
+	    image = ImageIO.read(new File("room/Room.jpg"));
 	} catch (IOException ex) {
 	    System.out.println("oops");
 	}
@@ -103,24 +105,16 @@ public class Room extends JFrame implements MouseListener {
 	canvas.addMouseListener(this);
 
 	//sets the x y bounds of the items in the room and initiallizes
-	painting = new Stuff();
-	painting.setXY(300,400,250,380);
-	rilakkuma = new Stuff();
-	rilakkuma.setXY(310, 370, 416, 495);
-	totoro = new Stuff();
-	totoro.setXY(217, 292, 442, 494);
-	appa = new Stuff();
-	appa.setXY(400,515,437,491);
-	drawer1 = new Stuff();
-	drawer1.setXY(190,285,525,555);
-	drawer2 = new Stuff();
-	drawer2.setXY(295,395,525,555);
-	drawer3 = new Stuff();
-	drawer3.setXY(402,514,525,555);
-	doorpad = new Stuff();
-	doorpad.setXY(630,665,365,445);
-	book = new Stuff();
-	book.setXY(109,152,390,400);
+	painting = new Stuff(300,400,250,380);
+	rilakkuma = new Stuff(310, 370, 416, 495);
+	totoro = new Stuff(217, 292, 442, 494);
+	appa = new Stuff(400,515,437,491);
+	drawer1 = new Stuff(190,285,525,555);
+	drawer2 = new Stuff(295,395,525,555);
+	drawer3 = new Stuff(402,514,525,555);
+	doorpad = new Stuff(630,665,365,445);
+	book = new Stuff(109,152,390,400);
+	
 
 	//set up inventory
 	inventory = new ArrayList<Stuff>();
@@ -130,67 +124,6 @@ public class Room extends JFrame implements MouseListener {
 	phone = new Stuff("phone");
 	//not sure how to handle slips
 	
-    }
-
-
-    //class for items in the room
-    public class Stuff {
-        private int[] coord; //holds cordinates of item in order x1,x2,y1,y2
-	private String name;
-	private boolean active;
-
-	public Stuff(){
-	    coord = new int[4];
-	    active = true;
-	}
-	
-	//names apply to inventory items only
-	public Stuff(String name){
-	    this.name = name;
-	}
-
-	public String toString(){
-	    return name;
-	}
-
-	public void setXY(int x1, int x2, int y1, int y2){
-	    coord[0] = x1;
-	    coord[1] = x2;
-	    coord[2] = y1;
-	    coord[3] = y2;
-	}
-
-	//returns array with all 4 coordinates in it
-	public int[] getXY(){
-	    return coord;
-	}
-	
-	//tests if the given (x,y) is within the bounds of the item
-	public boolean withinBounds(int xLocation, int yLocation){
-	    if( xLocation >= coord[0] &&
-		xLocation <= coord[1] &&
-		yLocation >= coord[2] &&
-		yLocation <= coord[3]){
-		return true;
-	    }
-	    return false;
-	}
-	
-	public void setName(String s){
-	    name = s;
-	}
-
-	public String getName(){
-	    return name;
-	}
-
-	public boolean isActive(){
-	    return active;
-	}
-
-	public void setActive(boolean b){
-	    active = b;
-	}
     }
 	
 	    
