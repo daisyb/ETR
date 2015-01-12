@@ -18,12 +18,13 @@ public class Keypad extends JDialog {
     */
 
 
-    public Keypad() {
+    public Keypad(JFrame parent, boolean modal) {
 	setTitle("Keypad");
 	setSize(650, 450);
 	setLocation(100, 100);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	pane = getContentPane();
+	super(parent, true);
 	GroupLayout layout = new GroupLayout(pane);
 	pane.setLayout(layout);
 	spaces = new JTextArea("hello", 100, 20);

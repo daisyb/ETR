@@ -77,7 +77,7 @@ public class Room extends JFrame implements MouseListener{
 	    System.out.println("d3");
 	    
 	}else if (doorpad.withinBounds(x,y)){
-	    System.out.println("doorpad");
+	    Keypad k = new Keypad(this, true);
 
 	}else if (book.withinBounds(x,y)){
 	    System.out.println("book");
