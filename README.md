@@ -44,6 +44,11 @@ Room Escape Puzzle
   - created pBack.java which runs after the Scramble.java puzzle is completed
     - pBAck let's the user click on items that will enter their inventory
 
+1/12
+- Daisy: Popup.java, an abstract class for all popup JDialog Boxes
+  - started Drawer.java which is similar to pBack except for the Drawers
+  - modified pBack and Drawer.java to extend Popup.java
+
 ## FINAL PUZZLE OUTLINE
 
 - key to first drawer in painting
