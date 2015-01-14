@@ -20,9 +20,9 @@ public class pBack extends Popup{
 	if(key.withinBounds(x,y) && key.isActive()){
 	
 	    if(slip.isActive()){
-		setImage("painting/pJustSlip.bmp");
+		setImage("images/painting/pJustSlip.bmp");
 	    } else {
-		setImage("painting/pNothin.bmp");
+		setImage("images/painting/pNothin.bmp");
 	    }	
 	    canvas.update(canvas.getGraphics());
 	    key.setActive(false);
@@ -30,9 +30,9 @@ public class pBack extends Popup{
 	} else if (slip.withinBounds(x,y) && slip.isActive()){
 
 	    if(key.isActive()){
-		setImage("painting/pJustKey.bmp");
+		setImage("images/painting/pJustKey.bmp");
 	    }else {
-		setImage("painting/pNothin.bmp");
+		setImage("images/painting/pNothin.bmp");
 	    }
 	    canvas.update(canvas.getGraphics());
 	    slip.setActive(false);
@@ -44,7 +44,7 @@ public class pBack extends Popup{
 	super(parent,true);
 	setSize(400,530);	
 	setTitle("Back of Poster");
-	setImage("painting/pBack.bmp");
+	setImage("images/painting/pBack.bmp");
 
 	pane = getContentPane();
 

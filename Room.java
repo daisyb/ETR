@@ -44,7 +44,7 @@ public class Room extends JFrame implements MouseListener{
 	    Scramble s = new Scramble(this,true);
 	    if(s.getWinner()){
 		try {                
-		    image = ImageIO.read(new File("room/Room2.jpg"));
+		    image = ImageIO.read(new File("images/room/Room2.jpg"));
 		} catch (IOException ex) {
 		    System.out.println("oops");
 		}
@@ -89,12 +89,12 @@ public class Room extends JFrame implements MouseListener{
     public Room() {
 	setTitle("Room");
 	setSize(700,900);
-	setLocation(200,100);
+	setLocation(200,50);
 
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	pane = getContentPane();
 	try {                
-	    image = ImageIO.read(new File("room/Room.jpg"));
+	    image = ImageIO.read(new File("images/room/Room.jpg"));
 	} catch (IOException ex) {
 	    System.out.println("oops");
 	}

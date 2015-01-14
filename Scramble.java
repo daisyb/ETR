@@ -12,7 +12,7 @@ public class Scramble extends JDialog{
     private Random rnd = new Random(); 
     private BufferedImage image; //stores image
     private Container pane;     //holds everything
-    private JPanel grid; //contains image pieces(boxes)
+    private JPanel grid,userInfo; //contains image pieces(boxes)
     private JButton submit, clear; //'submit' checks puzzle, 'clear' clears onscren meassages
     private JTextArea instructions,t; //text area to hold instructions
     private Box[] boxList; //array of buttons with pieces of the image on it, Box is a custom class
@@ -90,12 +90,14 @@ public class Scramble extends JDialog{
 	super(parent, true);
 	setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	setTitle("Picture Scramble");
-	setSize(600,800);
-	setLocation(250,150);
+	setSize(800,600);
+	setLocation(300,150);
+
 	//setDefaultCloseOperation(EXIT_ON_CLOSE);
 	//setResizable(false);
 	pane = getContentPane();        
-	pane.setLayout(new BoxLayout(pane,BoxLayout.Y_AXIS));
+	pane.setLayout(new BoxLayout(pane,BoxLayout.X_AXIS));
+	
 	grid = new JPanel();
 	grid.setMaximumSize(new Dimension(450,600));
 	grid.setMinimumSize(new Dimension(450,600));
@@ -117,24 +119,27 @@ public class Scramble extends JDialog{
 	pane.add(grid);
 	winner = false;
 	clicked = -1;
+	userInfo = new JPanel();
+	userInfo.setMaximumSize(new Dimension(350,200));
+	userInfo.setLayout(new BoxLayout(userInfo,BoxLayout.Y_AXIS));
 	t = new JTextArea();
 	String s = new String();
-	s = " Complete the picture by reorganizing the frames.\n To switch a frame's location click on the frame and then click the frame you'd\n like to switch it with.\n Frames bordered in grey cannot be switched.\n Click 'Submit' when done.\n Click 'Clear' to clear on screen messages.";
+	s = " Complete the picture by reorganizing the frames.\n To switch a frame's location click on the frame and\n then click the frame you'd like to switch it with.\n Frames bordered in grey cannot be switched.\n Click 'Submit' when done.\n Click 'Clear' to clear on screen messages.";
 	instructions = new JTextArea(s);
 	instructions.setColumns(10);
 	instructions.setRows(100);
 	instructions.setBorder(BorderFactory.createLineBorder(Color.red,2));
 	instructions.setEditable(false);
-	pane.add(instructions);
+	userInfo.add(instructions);
 	submit = new JButton("Submit");
 	submit.setAlignmentX(Component.CENTER_ALIGNMENT);
 	submit.addActionListener(aL);
 	clear = new JButton("Clear");
 	clear.setAlignmentX(Component.CENTER_ALIGNMENT);
 	clear.addActionListener(aL);	
-	pane.add(submit);
-	pane.add(clear);
-
+	userInfo.add(submit);
+	userInfo.add(clear);
+	pane.add(userInfo);
 
 	setVisible(true);
 
