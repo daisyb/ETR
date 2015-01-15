@@ -2,10 +2,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-//NON-RUNABLE
-//still in the works till I make the drawer images
-
-
 /*
   creates window for looking inside either drawer
   chages behaivior based on the boolean drawer1
@@ -26,7 +22,7 @@ public class Drawer extends Popup{
 	if(Drawer1){
 	    if(scissors.withinBounds(x,y) && isActive()){
 		foundScissors = true;
-		setImage(folder + "dempty");
+		setImage(folder + "dempty.png");
 		canvas.update(canvas.getGraphics());
 		scissors.setActive(false);
 	    }
@@ -34,18 +30,18 @@ public class Drawer extends Popup{
 	    if(phone.withinBounds(x,y) && isActive()){
 		foundPhone = true;
 		if(slip.isActive()){
-		    setImage(folder+"d2NoPhone");
+		    setImage(folder+"d2NoPhone.png");
 		}else{
-		    setImage(folder+"dempty");
+		    setImage(folder+"dempty.png");
 		}
 		canvas.update(canvas.getGraphics());
 		phone.setActive(false);
 	    }else if(slip.withinBounds(x,y) && isActive()){
-		foundlip = true;
-		if(key.isActive()){
-		    setImage(folder+"d2NoSlip");
+		foundSlip = true;
+		if(phone.isActive()){
+		    setImage(folder+"d2NoSlip.png");
 		}else{
-		    setImage(folder+"dempty");
+		    setImage(folder+"dempty.png");
 		}
 		canvas.update(canvas.getGraphics());
 		phone.setActive(false);
@@ -57,29 +53,24 @@ public class Drawer extends Popup{
     public Drawer(JFrame parent, boolean modal,boolean isDrawer1){
 	super(parent, true);
 	Drawer1 = isDrawer1;
-	setSize(400,400);
+	setSize(500,600);
 	setTitle("Inside the Drawer");
 
 	if(Drawer1){
-	    setImage("images/drawers/d1");
+	    setImage("images/drawers/d1.png"); //setImage() from Popup class
 	}else{
-	    setImage("images/drawers/d2");
+	    setImage("images/drawers/d2.png");
 	}
 
-	pane = getContnentPane();
-	
-	canvas = new Canvas();
+	pane = getContentPane();
+       	canvas = new Canvas();
 	canvas.update(canvas.getGraphics());
 	pane.add(canvas);
 	canvas.addMouseListener(this);
 
-	/*
-	  have to figure out the coordinates for these 
-	  once the image is done:
-	    scissors = new Stuff(blahlabladlhg);
-	    slip = new Stuff(badjgfhasdjkghs);
-	    phone = new Stuff(blahblahabval);
-	*/
+	scissors = new Stuff(154,358,171,400);
+	slip = new Stuff(110,200,462,500);
+	phone = new Stuff(212,313,167,343);
 
 	setVisible(true);
     }

@@ -66,15 +66,23 @@ public class Room extends JFrame implements MouseListener{
 
 	}else if (drawer1.withinBounds(x,y)){
 	    System.out.println("d1");
-	    if(key1 == inHand){
-		//open drawer
-		
+	    // if(key1 == inHand){
+	    Drawer d = new Drawer(this,true,true);
+	    if(d.hasScissors()){
+		inventory.add(scissors);
 	    }
+	    //}
 	}else if (drawer2.withinBounds(x,y)){
-	    System.out.println("d2");
 
 	}else if (drawer3.withinBounds(x,y)){
-	    System.out.println("d3");
+	    //if(key3 == inHand){
+	    Drawer d = new Drawer(this,true,false);
+	    if(d.hasPhone()){
+		inventory.add(phone);
+	    }
+	    if(d.hasSlip()){
+		//inventory.add(slip);
+	    }
 	    
 	}else if (doorpad.withinBounds(x,y)){
 	    Keypad k = new Keypad(this, true);
