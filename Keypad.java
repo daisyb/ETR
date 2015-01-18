@@ -69,10 +69,72 @@ public class Keypad extends JDialog implements MouseListener{
     public void mouseClicked(MouseEvent e) {
 	int x = e.getX();
 	int y = e.getY();
+	boolean oneclicked, twoclicked, threeclicked, fourclicked, fiveclicked, sixclicked, sevenclicked, eightclicked, nineclicked, zeroclicked, poundclicked, starclicked;
+
+	oneclicked = false;
+	twoclicked = false;
+	threeclicked = false;
+	fourclicked = false;
+	fiveclicked = false;
+	sixclicked = false;
+	sevenclicked = false;
+	eightclicked = false;
+	nineclicked = false;
+	zeroclicked = false;
+	poundclicked = false;
+	starclicked = false;
 	if (one.withinBounds(x, y)) {
-	    System.out.println("1");
+	    try {
+		image = ImageIO.read(new File("images/kp1.jpg"));
+	    } catch (IOException ex) {
+		System.out.println("cannot load image");
+	    }
+	    canvas.update(canvas.getGraphics());
+	    oneclicked = true;
+	    if (two.withinBounds(x, y)) {
+		 try {
+		     image = ImageIO.read(new File("images/kp12.jpg"));
+		 } catch (IOException ex) {
+		     System.out.println("cannot load image");
+		 }
+	    }
+	    else if (three.withinBounds(x, y)) {
+		System.out.println("3");
+	    } else if (four.withinBounds(x, y)) {
+		System.out.println("4");
+	    } else if (five.withinBounds(x, y)) {
+		System.out.println("5");
+	    } else if (six.withinBounds(x, y)) {
+		System.out.println("6");
+	    } else if (seven.withinBounds(x, y)) {
+		System.out.println("7");
+	    } else if (eight.withinBounds(x, y)) {
+		System.out.println("8");
+	    } else if (nine.withinBounds(x, y)) {
+		System.out.println("9");
+	    } else if (zero.withinBounds(x, y)) {
+		System.out.println("0");
+	    } else if (star.withinBounds(x, y)) {
+		System.out.println("*");
+	    } else if (pound.withinBounds(x, y)) {
+		System.out.println("#");
+	}
 	} else if (two.withinBounds(x, y)) {
-	    System.out.println("2");
+	    if (!oneclicked) {
+		try {
+		    image = ImageIO.read(new File("images/kp2.jpg"));
+		} catch (IOException ex) {
+		    System.out.println("cannot load image");
+		}
+		canvas.update(canvas.getGraphics());
+	    } else {
+		try {
+		    image = ImageIO.read(new File("images/kp1.jpg"));
+		} catch (IOException ex) {
+		    System.out.println("cannot load image");
+		}
+		canvas.update(canvas.getGraphics());
+	    }
 	} else if (three.withinBounds(x, y)) {
 	    System.out.println("3");
 	} else if (four.withinBounds(x, y)) {
@@ -146,4 +208,4 @@ public class Keypad extends JDialog implements MouseListener{
 	}
     }
 
-}
+    }
