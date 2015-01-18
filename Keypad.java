@@ -42,7 +42,6 @@ public class Keypad extends JDialog implements MouseListener{
 	pane.add(canvas);
 	canvas.addMouseListener(this);
 
-
 	one = new keys(53, 131, 161, 239);
 	two = new keys(142, 219, 161, 239);
 	three = new keys(229, 306, 157, 239);
