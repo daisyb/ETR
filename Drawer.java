@@ -44,7 +44,7 @@ public class Drawer extends Popup{
 		    setImage(folder+"dempty.png");
 		}
 		canvas.update(canvas.getGraphics());
-		phone.setActive(false);
+		slip.setActive(false);
 	    }
 	}
     }
@@ -72,9 +72,12 @@ public class Drawer extends Popup{
 	slip = new Stuff(110,200,462,500);
 	phone = new Stuff(212,313,167,343);
 
-	setVisible(true);
-    }
+	foundScissors = false;
+	foundPhone = false;
+	foundSlip = false;
 
+    }
+ 
     //methods to tell Room.java which items
     //the user picked up
     public boolean hasScissors(){
