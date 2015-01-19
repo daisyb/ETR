@@ -32,7 +32,7 @@ public class Scramble extends JDialog{
 		middle = 27;
 		if(ae.getSource() == submit && t.getParent() != boxList[middle]){
 		    if(isCorrect(key,boxList)){
-			t = new JTextArea(" Puzzle\n Complete!\n Close window\n to continue");
+			t = new JTextArea(" Success!\n Close\n window\n to continue");
 			t.setEditable(false);
 			t.setBackground(Color.YELLOW);
 			boxList[middle].add(t);
@@ -91,7 +91,7 @@ public class Scramble extends JDialog{
 	setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	setTitle("Picture Scramble");
 	setSize(800,600);
-	setLocation(300,150);
+	setLocation(200,150);
 
 	//setDefaultCloseOperation(EXIT_ON_CLOSE);
 	//setResizable(false);
