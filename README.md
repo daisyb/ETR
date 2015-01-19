@@ -45,9 +45,21 @@ Room Escape Puzzle
     - pBAck let's the user click on items that will enter their inventory
 
 1/12
-- Daisy: Popup.java, an abstract class for all popup JDialog Boxes
+- Daisy: Added Popup.java, an abstract class for all popup JDialog Boxes
   - started Drawer.java which is similar to pBack except for the Drawers
   - modified pBack and Drawer.java to extend Popup.java
+
+1/15
+- Daisy: Completed Drawer.java and instantiated in Room.java
+  - Created Animals.java which runs the popups for the stuffed animals in the room
+
+1/17
+- Daisy: Completed Animals.java
+
+1/19
+- Daisy: Instantiated Aniamls.java in Room.java
+  - Modiefied the way popups work in Room.java
+    - This way even after the user has taken items, they can still open the window
 
 ## FINAL PUZZLE OUTLINE
 
