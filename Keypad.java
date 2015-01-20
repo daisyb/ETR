@@ -69,20 +69,9 @@ public class Keypad extends JDialog implements MouseListener{
     public void mouseClicked(MouseEvent e) {
 	int x = e.getX();
 	int y = e.getY();
-	boolean oneclicked, twoclicked, threeclicked, fourclicked, fiveclicked, sixclicked, sevenclicked, eightclicked, nineclicked, zeroclicked, poundclicked, starclicked;
+	String passcodeguess;
+	String passcode = "13456240";
 
-	oneclicked = false;
-	twoclicked = false;
-	threeclicked = false;
-	fourclicked = false;
-	fiveclicked = false;
-	sixclicked = false;
-	sevenclicked = false;
-	eightclicked = false;
-	nineclicked = false;
-	zeroclicked = false;
-	poundclicked = false;
-	starclicked = false;
 	if (one.withinBounds(x, y)) {
 	    try {
 		image = ImageIO.read(new File("images/kp1.jpg"));
@@ -90,43 +79,94 @@ public class Keypad extends JDialog implements MouseListener{
 		System.out.println("cannot load image");
 	    }
 	    canvas.update(canvas.getGraphics());
-	    oneclicked = true;
+	    passcodeguess = passcodeguess + "1";
 	} else if (two.withinBounds(x, y)) {
-	    if (oneclicked) {
-		try {
-		    image = ImageIO.read(new File("images/kp2.jpg"));
-		} catch (IOException ex) {
-		    System.out.println("cannot load image");
-		}
-		canvas.update(canvas.getGraphics());
-	    } else {
-		try {
-		    image = ImageIO.read(new File("images/kp12.jpg"));
-		} catch (IOException ex) {
-		    System.out.println("cannot load image");
-		}
-		canvas.update(canvas.getGraphics());
+	    try {
+		image = ImageIO.read(new File("images/kp2.jpg"));
+	    } catch (IOException ex) {
+		System.out.println("cannot load image");
 	    }
+	    canvas.update(canvas.getGraphics());
 	} else if (three.withinBounds(x, y)) {
-	    System.out.println("3");
+	    try {
+		image = ImageIO.read(new File("images/kp3.jpg"));
+	    } catch (IOException ex) {
+		System.out.println("cannot load image");
+	    }
+	    canvas.update(canvas.getGraphics());
+	    passcodeguess = passcodeguess + "3";
 	} else if (four.withinBounds(x, y)) {
-	    System.out.println("4");
+	try {
+		image = ImageIO.read(new File("images/kp4.jpg"));
+	    } catch (IOException ex) {
+		System.out.println("cannot load image");
+	    }
+	    canvas.update(canvas.getGraphics());
+	    passcodeguess = passcodeguess + "4";
 	} else if (five.withinBounds(x, y)) {
-	    System.out.println("5");
+	    try {
+		image = ImageIO.read(new File("images/kp5.jpg"));
+	    } catch (IOException ex) {
+		System.out.println("cannot load image");
+	    }
+	    canvas.update(canvas.getGraphics());
+	    passcodeguess = passcodeguess + "5";
 	} else if (six.withinBounds(x, y)) {
-	    System.out.println("6");
+	     try {
+		image = ImageIO.read(new File("images/kp6.jpg"));
+	    } catch (IOException ex) {
+		System.out.println("cannot load image");
+	    }
+	    canvas.update(canvas.getGraphics());
+	    passcodeguess = passcodeguess + "6";
 	} else if (seven.withinBounds(x, y)) {
-	    System.out.println("7");
+	     try {
+		image = ImageIO.read(new File("images/kp7.jpg"));
+	    } catch (IOException ex) {
+		System.out.println("cannot load image");
+	    }
+	    canvas.update(canvas.getGraphics());
+	    passcodeguess = passcodeguess + "7";
 	} else if (eight.withinBounds(x, y)) {
-	    System.out.println("8");
+	     try {
+		image = ImageIO.read(new File("images/kp8.jpg"));
+	    } catch (IOException ex) {
+		System.out.println("cannot load image");
+	    }
+	    canvas.update(canvas.getGraphics());
+	    passcodeguess = passcodeguess + "8";
 	} else if (nine.withinBounds(x, y)) {
-	    System.out.println("9");
+	     try {
+		image = ImageIO.read(new File("images/kp9.jpg"));
+	    } catch (IOException ex) {
+		System.out.println("cannot load image");
+	    }
+	    canvas.update(canvas.getGraphics());
+	    passcodeguess = passcodeguess + "9";
 	} else if (zero.withinBounds(x, y)) {
-	    System.out.println("0");
+	    try {
+		image = ImageIO.read(new File("images/kp0.jpg"));
+	    } catch (IOException ex) {
+		System.out.println("cannot load image");
+	    }
+	    canvas.update(canvas.getGraphics());
+	    passcodeguess = passcodeguess + "0";
 	} else if (star.withinBounds(x, y)) {
-	    System.out.println("*");
+	     try {
+		image = ImageIO.read(new File("images/kpstar.jpg"));
+	    } catch (IOException ex) {
+		System.out.println("cannot load image");
+	    }
+	    canvas.update(canvas.getGraphics());
+	    passcodeguess = passcodeguess + "*";
 	} else if (pound.withinBounds(x, y)) {
-	    System.out.println("#");
+	     try {
+		image = ImageIO.read(new File("images/kppound.jpg"));
+	    } catch (IOException ex) {
+		System.out.println("cannot load image");
+	    }
+	    canvas.update(canvas.getGraphics());
+	    passcodeguess = passcodeguess + "#";
 	}
     }
 
