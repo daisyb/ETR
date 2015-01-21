@@ -21,6 +21,7 @@ public class Keypad extends JDialog implements MouseListener{
     private Container pane;
     public keys one, two, three, four, five, six, seven, eight, nine, zero, star, pound;
     private JTextArea instructions, spaces, status;
+    private String passcodeguess = "";
 
     public Keypad(JFrame parent, boolean modal) {
 	super(parent, true);
@@ -69,7 +70,6 @@ public class Keypad extends JDialog implements MouseListener{
     public void mouseClicked(MouseEvent e) {
 	int x = e.getX();
 	int y = e.getY();
-	String passcodeguess;
 	String passcode = "13456240";
 
 	if (one.withinBounds(x, y)) {
@@ -87,6 +87,7 @@ public class Keypad extends JDialog implements MouseListener{
 		System.out.println("cannot load image");
 	    }
 	    canvas.update(canvas.getGraphics());
+	    passcodeguess = passcodeguess + "2";
 	} else if (three.withinBounds(x, y)) {
 	    try {
 		image = ImageIO.read(new File("images/kp3.jpg"));
@@ -168,6 +169,7 @@ public class Keypad extends JDialog implements MouseListener{
 	    canvas.update(canvas.getGraphics());
 	    passcodeguess = passcodeguess + "#";
 	}
+	System.out.println(passcodeguess);
     }
 
     private class Canvas extends JPanel {
@@ -220,4 +222,4 @@ public class Keypad extends JDialog implements MouseListener{
 	}
     }
 
-    }
+}
