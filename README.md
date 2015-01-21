@@ -49,6 +49,10 @@ Room Escape Puzzle
   - started Drawer.java which is similar to pBack except for the Drawers
   - modified pBack and Drawer.java to extend Popup.java
 
+1/13
+- Camille: remade image for Keypad.java (screen was crooked)
+  - converted Keypad.java into a modal dialog box
+
 1/15
 - Daisy: Completed Drawer.java and instantiated in Room.java
   - Created Animals.java which runs the popups for the stuffed animals in the room
