@@ -19,6 +19,7 @@ public class Room extends JFrame implements MouseListener{
     private Container pane;
     private JPanel canvas;
     private ArrayList<Stuff> inventory; //arrayList to hold inventory items
+    private ArrayList<JButton> inventoryVisuals;
     private Animals t,r,a; //popups for the stuffed animals
     private Drawer d1, d3; //popups for the drawers
     private Stuff inHand; //object currently holding (button pressed)
@@ -160,7 +161,9 @@ public class Room extends JFrame implements MouseListener{
 	
     }
 	
-	    
+	 
+public void updateIventoryVisuals{
+    
 	    
     private class Canvas extends JPanel {
 	public void paintComponent(Graphics g) {
