@@ -138,8 +138,16 @@ public class Room extends JFrame implements MouseListener{
 	    
 	}else if (doorpad.withinBounds(x,y)){
 	    Keypad k = new Keypad(this, true);
-
-	}else if (book.withinBounds(x,y)){
+	    if (k.gotOut()) {
+		try {                
+		    image = ImageIO.read(new File("images/endscreen.png"));
+		} catch (IOException ex) {
+		    System.out.println("oops");
+		}
+	    }
+	    canvas.update(canvas.getGraphics());
+	
+	} else if (book.withinBounds(x,y)){
 	    System.out.println("book");
 
 	} else if (slip1.withinBounds(x,y) && slip1.isActive()){
@@ -218,7 +226,7 @@ public class Room extends JFrame implements MouseListener{
 	//inHand = new InventoryItem("null", "null"); //initialized but doesn't do anything yet
 	key1 = new InventoryItem("silver key", "SilverKey.png");
 	key1.addActionListener(aL);
-	key3 = new InventoryItem("gold key", "Goldkey.png");
+	key3 = new InventoryItem("gold key", "GoldKey.png");
 	key3.addActionListener(aL);
 	phone = new InventoryItem("phone", "Phone.png");
 	phone.addActionListener(aL);
