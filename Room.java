@@ -27,6 +27,7 @@ public class Room extends JFrame implements MouseListener{
     private InventoryItem key1, key3, scissors, slips, phone; //slip1,slip2,slip3,slip4,slip5; 
     //^items you can hold and put in inventory,subclass that extends JButton, 
     private int slipCount = 0;
+    private ImagePopups ipB, ipP, ipS;
 
     private ActionListener aL = new ActionListener(){
 	    public void actionPerformed(ActionEvent ae){
@@ -37,11 +38,20 @@ public class Room extends JFrame implements MouseListener{
 		} else if(inHand == i){		    
 		    inHand.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 		    inHand = null;
-		}else{
+		} else {
 		    i.setBorder(BorderFactory.createLineBorder(Color.GREEN, 3));
 		    inHand.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 		    inHand = i;
 		}
+		if (i == phone) {
+		    ipP = new ImagePopups(new JFrame(), true, 1);
+		    ipP.setVisible(true);
+		}
+		if (i == slips && slipCount == 5) {
+		    ipS = new ImagePopups(new JFrame(), true, 2);
+		    ipS.setVisible(true);
+		}
+		    
 	    }
 	};
 
@@ -148,7 +158,10 @@ public class Room extends JFrame implements MouseListener{
 	    canvas.update(canvas.getGraphics());
 	
 	} else if (book.withinBounds(x,y)){
-	    System.out.println("book");
+	    if (slipCount == 5) {
+		ipB = new ImagePopups(this, true, 3);
+		ipB.setVisible(true);
+	    }
 
 	} else if (slip1.withinBounds(x,y) && slip1.isActive()){
 	    if(slipCount == 0){
