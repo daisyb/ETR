@@ -50,7 +50,7 @@ public class Scramble extends JDialog{
 		    try{
 			boxList[middle].remove(t);
 		    } catch(Exception e){}
-		    boxList[middle].revalidate();
+		    boxList[middle].repaint();
 		}
 		    
 	    }
