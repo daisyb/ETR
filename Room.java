@@ -14,21 +14,25 @@ import java.lang.ClassLoader;
 
 public class Room extends JFrame implements MouseListener{
     
-    private JFrame frame;
     private BufferedImage image;
     private Container pane;
-    private JPanel canvas, buttons;
-    private ArrayList<Stuff> inventory; //arrayList to hold inventory items
+    private JPanel canvas, inventory;
     private Animals t,r,a; //popups for the stuffed animals
     private Drawer d1, d3; //popups for the drawers
     private Stuff painting, totoro, rilakkuma, appa, drawer1, drawer2, drawer3, doorpad, book, slip1,slip2; 
     //^items in room
     private InventoryItem inHand; //object currently holding (button pressed)
-    private InventoryItem key1, key3, scissors, slips, phone; //slip1,slip2,slip3,slip4,slip5; 
+    private InventoryItem key1, key3, scissors, slips, phone;
     //^items you can hold and put in inventory,subclass that extends JButton, 
-    private int slipCount = 0;
-    private ImagePopups ipB, ipP, ipS;
+    private int slipCount = 0; //number of slips in possesion, 5 in total
+    private ImagePopups ipB, ipP, ipS;//popups for book, phone, and all slips
 
+
+    /*
+      ActionListener for InventoryItems
+      changes border of selected item and sets inHand
+      if the item is the phone or slip -> opens a new window
+    */
     private ActionListener aL = new ActionListener(){
 	    public void actionPerformed(ActionEvent ae){
 		InventoryItem i =(InventoryItem) ae.getSource();
@@ -56,7 +60,14 @@ public class Room extends JFrame implements MouseListener{
 	};
 
     
-  
+    /*
+      MouseEvents for Stuff() in the room.
+      In most cases it will open up a popup window
+      for aquiring InventoryItems.
+      Some Stuff() will only function depending on
+      wich InventoryItem is inHand
+    */
+
     public void mousePressed(MouseEvent e) {
     }
 
@@ -81,23 +92,24 @@ public class Room extends JFrame implements MouseListener{
 		}
 		canvas.update(canvas.getGraphics());
 		painting.setActive(false);
-		pBack p = new pBack(this,true);
 
-		if(slipCount == 0){
-		    buttons.add(slips);
-		    buttons.revalidate();
+		pBack p = new pBack(this,true); //window for back of painting
+
+		if(slipCount == 0){   //adds slip inventory item to inventory
+		    inventory.add(slips);
+		    inventory.revalidate();
 		    slipCount +=1;
-		} else {
+		} else {             //or increases slip count
 		    slipCount +=1;
 		    slips.setText("Slips: " + slipCount + "/5");
 		}
-		buttons.add(key1);
-		buttons.revalidate();
+		inventory.add(key1);   //adds to inventory
+		inventory.revalidate();
 	    }
 	 
 	}else if (totoro.withinBounds(x,y)){
 	    if(scissors == inHand){
-		t.setVisible(true);
+		t.setVisible(true);  //t == totoro's popup of class Animals
 		if(t.hasSlip() && totoro.isActive()){
 		    totoro.setActive(false);
 		    slipCount +=1;
@@ -106,37 +118,37 @@ public class Room extends JFrame implements MouseListener{
 	    }
 	}else if (rilakkuma.withinBounds(x,y)){
 	    if(scissors == inHand){
-		r.setVisible(true);
+		r.setVisible(true); //r == rilakuma's popup of class Animals
 	    }
 	}else if (appa.withinBounds(x,y)){
 	    if(scissors == inHand){	    
-		a.setVisible(true);
+		a.setVisible(true); //a = appa's popup of class Animals
 		if(a.hasKey() && appa.isActive()){    
 		    appa.setActive(false);
 
-		    buttons.add(key3);
-		    buttons.revalidate();
+		    inventory.add(key3);
+		    inventory.revalidate();
 		}
 	    }
 	    
 	}else if (drawer1.withinBounds(x,y)){
 	    if(key1 == inHand){
-		d1.setVisible(true);
+		d1.setVisible(true); //drawer1 popup of class Drawers
 		if(d1.hasScissors() && drawer1.isActive()){
 		    drawer1.setActive(false);
 
-		    buttons.add(scissors);
-		    buttons.revalidate();
+		    inventory.add(scissors);
+		    inventory.revalidate();
 		}
 	    }
 	}else if (drawer2.withinBounds(x,y)){
 
 	}else if (drawer3.withinBounds(x,y)){
 	    if(key3 == inHand){
-		d3.setVisible(true);
-		if(d3.hasPhone() && phone.getParent() != buttons){
-		    buttons.add(phone);
-		    buttons.revalidate();
+		d3.setVisible(true); //drawer3 popup of class Drawers
+		if(d3.hasPhone() && phone.getParent() != inventory){
+		    inventory.add(phone);
+		    inventory.revalidate();
 
 		}
 		if(d3.hasSlip() && drawer3.isActive()){
@@ -163,10 +175,10 @@ public class Room extends JFrame implements MouseListener{
 		ipB.setVisible(true);
 	    }
 
-	} else if (slip1.withinBounds(x,y) && slip1.isActive()){
+	} else if (slip1.withinBounds(x,y) && slip1.isActive()){ //individual slips in room
 	    if(slipCount == 0){
-		buttons.add(slips);
-		buttons.revalidate();
+		inventory.add(slips);
+		inventory.revalidate();
 		slipCount +=1;
 	    } else {
 		slipCount +=1;
@@ -176,8 +188,8 @@ public class Room extends JFrame implements MouseListener{
 	  
 	} else if (slip2.withinBounds(x,y) && slip2.isActive()){
 	    if(slipCount == 0){
-		buttons.add(slips);
-		buttons.revalidate();
+		inventory.add(slips);
+		inventory.revalidate();
 		slipCount +=1;
 	    } else {
 		slipCount +=1;
@@ -209,11 +221,7 @@ public class Room extends JFrame implements MouseListener{
 	pane.add(canvas);
 	canvas.addMouseListener(this);
 
-	buttons = new JPanel();
-	buttons.setLayout(new GridLayout(5,1));
-	buttons.setPreferredSize(new Dimension(121,725));
-	buttons.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
-	pane.add(buttons);
+
 
 	//sets the x y bounds of the items in the room and initiallizes
 	painting = new Stuff(300,400,250,380);
@@ -228,15 +236,22 @@ public class Room extends JFrame implements MouseListener{
 	slip1 = new Stuff(429,466,657,677);
 	slip2 = new Stuff(99,115,465,479);
 	
+	//initializes popup windows
 	t = new Animals(this,true,1);
 	r = new Animals(this,true,2);
 	a = new Animals(this,true,3);
 	d1 = new Drawer(this,true,true);
 	d3 = new Drawer(this,true,false);
 
+
+	//JPanel for inventory made of inventory
+	inventory = new JPanel();
+	inventory.setLayout(new GridLayout(5,1));
+	inventory.setPreferredSize(new Dimension(121,725));
+	inventory.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+	pane.add(inventory);
+
 	//set up inventory
-	//inventory = new ArrayList<Stuff>();
-	//inHand = new InventoryItem("null", "null"); //initialized but doesn't do anything yet
 	key1 = new InventoryItem("silver key", "SilverKey.png");
 	key1.addActionListener(aL);
 	key3 = new InventoryItem("gold key", "GoldKey.png");
@@ -250,6 +265,7 @@ public class Room extends JFrame implements MouseListener{
 	
     }
 	
+    //inventory items
     private class InventoryItem extends JButton{
 	private BufferedImage i;
 
@@ -278,6 +294,7 @@ public class Room extends JFrame implements MouseListener{
 	}
     }
 	    
+    //canvas class
     private class Canvas extends JPanel {
 	public void paintComponent(Graphics g) {
 	    super.paintComponent(g);
@@ -286,7 +303,6 @@ public class Room extends JFrame implements MouseListener{
     }
     
     public static void main(String[] args) {
-
 	Room r = new Room();
 	r.setVisible(true);
     }

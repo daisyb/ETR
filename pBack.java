@@ -58,13 +58,6 @@ public class pBack extends Popup{
 	
 	setVisible(true);
     }
-
-
-    
-    public static void main(String[] args){
-	pBack p = new pBack(new JFrame(),true);
-	
-    }
     
     
 }

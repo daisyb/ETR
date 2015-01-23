@@ -49,7 +49,7 @@ public class Animals extends Popup{
 	setSize(475,375);
 	if(animalnum == 1){
 	    setTitle("Inside Totoro");
-	    setImage("images/stuffed/stuffedSlip.bmp");
+	    setImage("images/stuffed/stuffedSlip.bmp"); //setImage() from Popup.java
 	}else if (animalnum == 2){
 	    setTitle("Inside Rilakkuma");
 	    setImage("images/stuffed/stuffedEmpty.bmp");
@@ -72,24 +72,7 @@ public class Animals extends Popup{
 
     }
 
-    public Animals(JFrame parent, boolean modal){
-	this(parent,modal,2);
-    }
 
-    public void setAnimal(int whichAnimal){
-	animalnum = whichAnimal;
-	if(animalnum == 1){
-	    setTitle("Inside Totoro");
-	    setImage("images/stuffed/stuffedSlip.bmp");
-	}else if (animalnum == 2){
-	    setTitle("Inside Rilakkuma");
-	    setImage("images/stuffed/stuffedEmpty.bmp");
-	}else{
-	    setTitle("Inside Appa");
-	    setImage("images/stuffed/stuffedKey.bmp");
-	}
-	System.out.println("Dsgasd");
-    }	
 
     //methods to tell Room.java which items
     //the user picked up

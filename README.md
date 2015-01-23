@@ -62,8 +62,16 @@ Room Escape Puzzle
 
 1/19
 - Daisy: Instantiated Aniamls.java in Room.java
-  - Modiefied the way popups work in Room.java
+  - Modified the way popups work in Room.java
     - This way even after the user has taken items, they can still open the window
+
+1/21
+- Daisy: Completed inventory in Room.java
+  - Basically a JPanel() with buttons for each item in it
+
+1/22
+- Daisy: Final modifications, cleaned up code, added comments etc.
+
 
 ## FINAL PUZZLE OUTLINE
 
