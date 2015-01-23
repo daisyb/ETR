@@ -9,7 +9,11 @@ Period 1
 
 ##Concept
 
-Room Escape Puzzle
+Welcome to Caisy's Room.
+This is a point and click puzzle game, and your objective is to escape the room.
+Click around to explore the environment.
+If you pick something up, it will show on the right as an inventory item. Click on the inventory item to use it. You can use the items to interact with the environment.
+Remember to think outside the box!
 
 ##ChangeLog
 
@@ -76,23 +80,4 @@ Room Escape Puzzle
 - Daisy: Final modifications, cleaned up code, added comments, etc.
 
 
-## FINAL PUZZLE OUTLINE
-
-- key to first drawer in painting
-- The first drawer contains scissors
-- The stuffed animals are cut open.
-  - The dog contains nothing.
-  - The totoro contains a slip.
-  - The bear contains a key.
-- The bear's key opens the second drawer.
-- The second contains a phone and slip
-- Location of the paper slips
-  - sh: stuffed bear
-  - ift for: carpet
-  - ward b: drawer
-  - y thi: shelf
-  - rteen: inside painting along with drawer key
-- The slips of paper connect to say "shift forward by thirteen"
-- The phone message is decoded to say "Only the fittest will survive"
-- The Evolution of the Species opens to a page that has a code
-- Door opens with keypad code
+## 
