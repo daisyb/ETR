@@ -42,7 +42,7 @@ Room Escape Puzzle
 - Daisy: Added clickable properties to a new item in the room, the book
   - made Stuff.java its own file outside of Room.java
   - created pBack.java which runs after the Scramble.java puzzle is completed
-    - pBAck let's the user click on items that will enter their inventory
+    - pBAck lets the user click on items that will enter their inventory
 
 1/12
 - Daisy: Added Popup.java, an abstract class for all popup JDialog Boxes
@@ -68,9 +68,12 @@ Room Escape Puzzle
 1/21
 - Daisy: Completed inventory in Room.java
   - Basically a JPanel() with buttons for each item in it
+- Camille and Daisy: created ImagePopups class, which is a simple subclass of Popup except with only the image and no Action/MouseListener
 
 1/22
-- Daisy: Final modifications, cleaned up code, added comments etc.
+- Camille: made endscreen for the end of the puzzle
+  - commented code
+- Daisy: Final modifications, cleaned up code, added comments, etc.
 
 
 ## FINAL PUZZLE OUTLINE

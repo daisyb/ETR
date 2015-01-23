@@ -160,6 +160,9 @@ public class Room extends JFrame implements MouseListener{
 	    
 	}else if (doorpad.withinBounds(x,y)){
 	    Keypad k = new Keypad(this, true);
+	    // once the window is closed, gotOut is called, which asks if what
+	    // user pressed is the same as the real passcode.
+	    // if it is, then the image is changed to the endscreen.
 	    if (k.gotOut()) {
 		try {                
 		    image = ImageIO.read(new File("images/endscreen.png"));
