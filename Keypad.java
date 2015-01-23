@@ -84,7 +84,7 @@ public class Keypad extends JDialog implements MouseListener{
        
 	if (one.withinBounds(x, y)) {
 	    try {
-		image = ImageIO.read(new File("images/kp1.jpg"));
+		image = ImageIO.read(new File("images/kpimages/kp1.jpg"));
 	    } catch (IOException ex) {
 		System.out.println("cannot load image");
 	    }
@@ -92,7 +92,7 @@ public class Keypad extends JDialog implements MouseListener{
 	    passcodeguess = passcodeguess + "1";
 	} else if (two.withinBounds(x, y)) {
 	    try {
-		image = ImageIO.read(new File("images/kp2.jpg"));
+		image = ImageIO.read(new File("images/kpimages/kp2.jpg"));
 	    } catch (IOException ex) {
 		System.out.println("cannot load image");
 	    }
@@ -100,7 +100,7 @@ public class Keypad extends JDialog implements MouseListener{
 	    passcodeguess = passcodeguess + "2";
 	} else if (three.withinBounds(x, y)) {
 	    try {
-		image = ImageIO.read(new File("images/kp3.jpg"));
+		image = ImageIO.read(new File("images/kpimages/kp3.jpg"));
 	    } catch (IOException ex) {
 		System.out.println("cannot load image");
 	    }
@@ -108,7 +108,7 @@ public class Keypad extends JDialog implements MouseListener{
 	    passcodeguess = passcodeguess + "3";
 	} else if (four.withinBounds(x, y)) {
 	    try {
-		image = ImageIO.read(new File("images/kp4.jpg"));
+		image = ImageIO.read(new File("images/kpimages/kp4.jpg"));
 	    } catch (IOException ex) {
 		System.out.println("cannot load image");
 	    }
@@ -116,7 +116,7 @@ public class Keypad extends JDialog implements MouseListener{
 	    passcodeguess = passcodeguess + "4";
 	} else if (five.withinBounds(x, y)) {
 	    try {
-		image = ImageIO.read(new File("images/kp5.jpg"));
+		image = ImageIO.read(new File("images/kpimages/kp5.jpg"));
 	    } catch (IOException ex) {
 		System.out.println("cannot load image");
 	    }
@@ -124,7 +124,7 @@ public class Keypad extends JDialog implements MouseListener{
 	    passcodeguess = passcodeguess + "5";
 	} else if (six.withinBounds(x, y)) {
 	     try {
-		image = ImageIO.read(new File("images/kp6.jpg"));
+		image = ImageIO.read(new File("images/kpimages/kp6.jpg"));
 	    } catch (IOException ex) {
 		System.out.println("cannot load image");
 	    }
@@ -132,7 +132,7 @@ public class Keypad extends JDialog implements MouseListener{
 	    passcodeguess = passcodeguess + "6";
 	} else if (seven.withinBounds(x, y)) {
 	     try {
-		image = ImageIO.read(new File("images/kp7.jpg"));
+		image = ImageIO.read(new File("images/kpimages/kp7.jpg"));
 	    } catch (IOException ex) {
 		System.out.println("cannot load image");
 	    }
@@ -140,7 +140,7 @@ public class Keypad extends JDialog implements MouseListener{
 	    passcodeguess = passcodeguess + "7";
 	} else if (eight.withinBounds(x, y)) {
 	     try {
-		image = ImageIO.read(new File("images/kp8.jpg"));
+		image = ImageIO.read(new File("images/kpimages/kp8.jpg"));
 	    } catch (IOException ex) {
 		System.out.println("cannot load image");
 	    }
@@ -148,7 +148,7 @@ public class Keypad extends JDialog implements MouseListener{
 	    passcodeguess = passcodeguess + "8";
 	} else if (nine.withinBounds(x, y)) {
 	     try {
-		image = ImageIO.read(new File("images/kp9.jpg"));
+		image = ImageIO.read(new File("images/kpimages/kp9.jpg"));
 	    } catch (IOException ex) {
 		System.out.println("cannot load image");
 	    }
@@ -156,7 +156,7 @@ public class Keypad extends JDialog implements MouseListener{
 	    passcodeguess = passcodeguess + "9";
 	} else if (zero.withinBounds(x, y)) {
 	    try {
-		image = ImageIO.read(new File("images/kp0.jpg"));
+		image = ImageIO.read(new File("images/kpimages/kp0.jpg"));
 	    } catch (IOException ex) {
 		System.out.println("cannot load image");
 	    }
@@ -164,7 +164,7 @@ public class Keypad extends JDialog implements MouseListener{
 	    passcodeguess = passcodeguess + "0";
 	} else if (star.withinBounds(x, y)) {
 	     try {
-		image = ImageIO.read(new File("images/kpstar.jpg"));
+		image = ImageIO.read(new File("images/kpimages/kpstar.jpg"));
 	    } catch (IOException ex) {
 		System.out.println("cannot load image");
 	    }
@@ -173,9 +173,19 @@ public class Keypad extends JDialog implements MouseListener{
 	} else if (enter.withinBounds(x, y)) {
 	    System.out.println(passcodeguess);
 	    if (passcodeguess.equals(passcode)) {
-		System.out.println("yay");
+	        try {
+		    image = ImageIO.read(new File("images/kpimages/kpClear.jpg"));
+		} catch (IOException ex) {
+		    System.out.println("cannot load image");
+		}
+		canvas.update(canvas.getGraphics());
 	    } else {
-		System.out.println("not yay");
+		try {
+		    image = ImageIO.read(new File("images/kpimages/kpError.jpg"));
+		} catch (IOException ex) {
+		    System.out.println("cannot load image");
+		}
+		canvas.update(canvas.getGraphics());
 	    }
 	}
     }
