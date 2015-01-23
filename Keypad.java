@@ -36,9 +36,9 @@ public class Keypad extends JDialog implements MouseListener{
 	pane = getContentPane();
 	//VERY WRONG - pane.setLayout(new FlowLayout());
 	try {
-	    image = ImageIO.read(new File("images/keypad2.jpg"));
+	    image = ImageIO.read(new File("images/kpimages/keypad2.jpg"));
 	} catch (IOException ex) {
-	    System.out.println("cannot load image");
+	    System.out.println("original image");
 	}
 	canvas = new Canvas();
 	canvas.update(canvas.getGraphics());
