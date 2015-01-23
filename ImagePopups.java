@@ -8,17 +8,16 @@ public class ImagePopups extends Popup {
     
     public ImagePopups(JFrame parent, boolean modal, int o) {
 	super(parent, true);
-	setSize(550, 550);
 	
 	if (o == 1) {
 	    setTitle("Phone");
-	    setImage("images/phone.bmp");
+	    setImage("images/items/phonePop.png");
 	} else if (o == 2) {
 	    setTitle("Slips");
-	    setImage("images/appa.bmp");
+	    setImage("images/items/Slip.png");
 	} else {
 	    setTitle("Darwin's Book");
-	    setImage("images/totoro.jpg");
+	    setImage("images/items/Book.png");
 	}
 
 	pane = getContentPane();
