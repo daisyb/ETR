@@ -171,7 +171,6 @@ public class Keypad extends JDialog implements MouseListener{
 	    canvas.update(canvas.getGraphics());
 	    passcodeguess = passcodeguess + "*";
 	} else if (enter.withinBounds(x, y)) {
-	    System.out.println(passcodeguess);
 	    if (passcodeguess.equals(passcode)) {
 	        try {
 		    image = ImageIO.read(new File("images/kpimages/kpClear.jpg"));
